@@ -10,7 +10,11 @@ export class ChoosefilterPage implements OnInit {
 
   city: string;
   title: any;
-  selectedArray: any=[];
+  selectedOptionArray: any=[];
+  selectedDayArray: any=[];
+  stars: string;
+  price: string;
+
 
   public form = [
         { val: 'Carte di credito', isChecked: false },
@@ -48,18 +52,43 @@ export class ChoosefilterPage implements OnInit {
   charMemberSelected(entry){
     entry.isChecked = !entry.isChecked;
     if(entry.isChecked){
-      this.selectedArray.push(entry);
+      this.selectedOptionArray.push(entry);
     } else {
-      let newArray = this.selectedArray.filter(function(el){
+      let newArray = this.selectedOptionArray.filter(function(el){
         return el.val !==  entry.val;
       });
-      this.selectedArray = newArray;
+      this.selectedOptionArray = newArray;
     }
-    console.log(entry.val);
+  }
+
+  daySelected(day){
+    day.isChecked = !day.isChecked;
+    if(entry.isChecked){
+      this.selectedDayArray.push(day);
+    } else {
+      let newArray = this.selectedDayArray.filter(function(el){
+        return el.val !==  entry.val;
+      });
+      this.selectedDayArray = newArray;
+    }
+
+  }
+
+  selectedStars(){
+    console.log(this.stars);
+  }
+
+  selectedPrice(){
+    console.log(this.price);
   }
 
 
   searchPlaces(){
+    if(this.city == null){
+      console.log("La città è obbligatoria")
+    } else {
+      console.log("Città: " + this.city);
+    }
     //costruzione query
 
   }

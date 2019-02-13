@@ -25,7 +25,7 @@
         <ion-card-content>
     <ion-item>
     <ion-label>Stelle</ion-label>
-    <ion-select value= "none" okText="Conferma" cancelText="Annulla">
+    <ion-select [(ngModel)]="stars" value= "none" okText="Conferma" cancelText="Annulla" (ionChange)="selectedStars()">
       <ion-select-option value="none">Indifferente</ion-select-option>
       <ion-select-option value="one">Una stella</ion-select-option>
       <ion-select-option value="two">Due stelle</ion-select-option>
@@ -45,7 +45,7 @@
     <ion-card-content>
 <ion-item>
 <ion-label>Spesa</ion-label>
-<ion-select value= "no" okText="Conferma" cancelText="Annulla">
+<ion-select [(ngModel)]="price" value= "no" okText="Conferma" cancelText="Annulla" (ionChange)="selectedPrice()">
   <ion-select-option value="no">Indifferente</ion-select-option>
   <ion-select-option value="1">$</ion-select-option>
   <ion-select-option value="2">$$</ion-select-option>
@@ -83,7 +83,7 @@
         <ion-col>
 
       <ion-label>{{day.val}}</ion-label>
-      <ion-checkbox color="primary"></ion-checkbox>
+      <ion-checkbox color="primary" (click)="daySelected(day)"></ion-checkbox>
 
     </ion-col>
       </ion-item>
