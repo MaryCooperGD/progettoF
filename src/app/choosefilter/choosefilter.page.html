@@ -5,5 +5,93 @@
 </ion-header>
 
 <ion-content padding>
+  <!-- Luogo -->
+  <ion-card>
+      <ion-card-header class="blue-title">
+      Dove ti trovi? (*)
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-textarea [(ngModel)]="city"  placeholder="Bologna, Milano, Roma ..."></ion-textarea>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Valutazione -->
+
+    <ion-card>
+        <ion-card-header class="blue-title">
+          Valutazione
+        </ion-card-header>
+        <ion-card-content>
+    <ion-item>
+    <ion-label>Stelle</ion-label>
+    <ion-select value= "none" okText="Conferma" cancelText="Annulla">
+      <ion-select-option value="none">Indifferente</ion-select-option>
+      <ion-select-option value="one">Una stella</ion-select-option>
+      <ion-select-option value="two">Due stelle</ion-select-option>
+      <ion-select-option value="three">Tre stelle</ion-select-option>
+      <ion-select-option value="four">Quattro stelle</ion-select-option>
+      <ion-select-option value="five">Cinque stelle</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-card-content>
+</ion-card>
+
+<!-- Fascia di prezzo -->
+<ion-card>
+    <ion-card-header class="blue-title">
+      Fascia di prezzo
+    </ion-card-header>
+    <ion-card-content>
+<ion-item>
+<ion-label>Spesa</ion-label>
+<ion-select value= "no" okText="Conferma" cancelText="Annulla">
+  <ion-select-option value="no">Indifferente</ion-select-option>
+  <ion-select-option value="1">$</ion-select-option>
+  <ion-select-option value="2">$$</ion-select-option>
+  <ion-select-option value="3">$$$</ion-select-option>
+  <ion-select-option value="4">$$$$</ion-select-option>
+</ion-select>
+</ion-item>
+</ion-card-content>
+</ion-card>
+
+<!-- Caratteristiche -->
+<ion-card>
+    <ion-card-header class="blue-title">
+      Preferenze
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+  <ion-item *ngFor="let entry of form">
+    <ion-label>{{entry.val}}</ion-label>
+    <ion-checkbox slot="end" (click)="charMemberSelected(entry)"></ion-checkbox>
+  </ion-item>
+</ion-list>
+</ion-card-content>
+</ion-card>
+
+<!-- Giorni di apertura -->
+
+<ion-card>
+    <ion-card-header class="blue-title">
+      Giorni di apertura
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-item *ngFor="let day of days">
+        <ion-col>
+
+      <ion-label>{{day.val}}</ion-label>
+      <ion-checkbox color="primary"></ion-checkbox>
+
+    </ion-col>
+      </ion-item>
+  </ion-row>
+</ion-card-content>
+</ion-card>
+
+<button class= "card-button" ion-button (click)="searchPlaces()">Cerca i posti</button>
+
 
 </ion-content>
