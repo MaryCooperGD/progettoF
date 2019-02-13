@@ -25,7 +25,7 @@
         <ion-card-content>
     <ion-item>
     <ion-label>Stelle</ion-label>
-    <ion-select [(ngModel)]="stars" value= "none" okText="Conferma" cancelText="Annulla" (ionChange)="selectedStars()">
+    <ion-select [(ngModel)]="stars" value= "none" okText="Conferma" cancelText="Annulla">
       <ion-select-option value="none">Indifferente</ion-select-option>
       <ion-select-option value="one">Una stella</ion-select-option>
       <ion-select-option value="two">Due stelle</ion-select-option>
@@ -45,7 +45,7 @@
     <ion-card-content>
 <ion-item>
 <ion-label>Spesa</ion-label>
-<ion-select [(ngModel)]="price" value= "no" okText="Conferma" cancelText="Annulla" (ionChange)="selectedPrice()">
+<ion-select [(ngModel)]="price" value= "no" okText="Conferma" cancelText="Annulla">
   <ion-select-option value="no">Indifferente</ion-select-option>
   <ion-select-option value="1">$</ion-select-option>
   <ion-select-option value="2">$$</ion-select-option>
@@ -75,10 +75,17 @@
 
 <ion-card>
     <ion-card-header class="blue-title">
-      Giorni di apertura
+      Apertura
     </ion-card-header>
     <ion-card-content>
-      <ion-row>
+
+        <ion-col>
+        <ion-label>Aperto ora</ion-label>
+        </ion-col>
+        <ion-col>
+        <ion-checkbox color="primary" (click)="openNow()"></ion-checkbox>
+        </ion-col>
+      <!-- <ion-row>
         <ion-item *ngFor="let day of days">
         <ion-col>
 
@@ -87,7 +94,7 @@
 
     </ion-col>
       </ion-item>
-  </ion-row>
+  </ion-row> -->
 </ion-card-content>
 </ion-card>
 
