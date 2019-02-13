@@ -55,7 +55,7 @@ export class ChoosefilterPage implements OnInit {
     this.route.params.subscribe(params => {
        this.title = "Cerca un posto per " + params['id'].toLowerCase();
        this.intent = params['id'].toLowerCase();
-  });
+  }); 
   }
 
   charMemberSelected(entry){
@@ -117,16 +117,22 @@ export class ChoosefilterPage implements OnInit {
       }
 
       this.request+="&client_id="+this.client_id+"&client_secret="+this.client_secret+"";
-      let param = [];
-      this.http.get(this.request)
-      .subscribe((response)=>{
-        response.response.group.results.forEach(el => {
-          let venue = {id: el.id, name: el.venue.name};
-          param.push(venue);
-        })
-        this.router.navigate(['/place-list', {par: param}]);
-
-      })
+        this.router.navigate(['/place-list', {request: this.request}]);
+      // let param = [];
+      // this.http.get(this.request)
+      // .subscribe((response)=>{
+      //   let array = [];
+      //   array = response.response.group.results;
+      //   // response.response.group.results.forEach(el => {
+      //   //   let venue = {id: el.id, name: el.venue.name};
+      //   //   param.push(String(el.id));
+      //   // })
+      //   // param.forEach(p=>{
+      //   //   console.log("Prima " + p);
+      //   // })
+      //   this.router.navigate(['/place-list', {request: this.request}]);
+      //
+      // })
     }
 
   }
