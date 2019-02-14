@@ -1,13 +1,18 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <div id="venuesList" scrollY="true" >
-           <ion-list *ngFor="let v of venuesList" class="member_list">
+           <ion-list *ngFor="let v of venuesList" class="member_list" >
+             <button ion-item  (click)="searchVenue(v)">
              <p>{{v.name}}</p>
+           </button>
            </ion-list>
        </div>
 </ion-content>

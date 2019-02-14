@@ -9,15 +9,22 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   title="Che cosa vuoi mangiare oggi?"
-  private intentList: Array<any>;
+  public intentList: any[];
 
 constructor(private router: Router) {
-  this.intentList = ["Colazione","Brunch","Pranzo","Caffè e merenda","Cena","Pasticceria","Cocktail Bar",]
+  this.intentList =  [
+        { val: "Colazione", intent: "breakfast" },
+        { val: 'Brunch', intent: "brunch"},
+        { val: 'Pranzo', intent: "lunch"},
+        { val: 'Caffè e merenda', intent: "coffee"},
+        { val: 'Cena', intent: "dinner" },
+        { val: 'Pasticceria', intent: "dessert" },
+        { val: 'Cocktail Bar', intent: "drinks"}
+      ];
 
   }
 
   clickedImage(intent){
-
       this.router.navigate(['/choosefilter',{id:intent}]);
 
     }

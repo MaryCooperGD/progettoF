@@ -13,3 +13,10 @@
 .card-button{
     width: 100% !important;
   }
+
+  .sfondo_content{
+     --background: url('assets/images/background_app.jpg');
+     background-repeat: no-repeat;
+     background-size:cover;
+     width:100%;
+ }

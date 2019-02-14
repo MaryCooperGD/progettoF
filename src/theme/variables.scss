@@ -74,4 +74,22 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  ion-card-header {
+      background-color: #99ff99;
+  }
+
+  ion-card-content {
+    background-color: #e6ffe6;
+  }
+
+  ion-header {
+    background-color: #e6ffe6;
+    text-shadow: 1px 1px 1px black;
+  }
+
+  ion-list {
+    margin-bottom: 10px;
+  }
+
 }

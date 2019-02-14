@@ -1,9 +1,67 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>placeDetails</ion-title>
-  </ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-title>Informazioni {{title}}</ion-title>
+</ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="sfondo_content">
+
+  <ion-card>
+       <ion-card-header text-center text-wrap>
+         {{title}}
+       </ion-card-header>
+
+       <ion-card-content>
+         <img class="image_style" src="{{photo_url}}"/><!--in foto_url ho il path dal database-->
+         <p text-center class="address">{{address}}</p>
+         <div text-center>
+        <ion-badge  color="danger" >{{rating}}</ion-badge>
+      </div>
+
+       </ion-card-content>
+       </ion-card>
+
+       <ion-card>
+           <ion-card-header text-center>
+             Categorie
+           </ion-card-header>
+           <ion-card-content>
+
+             <ion-grid>
+                <ion-row>
+                  <ion-col col-auto *ngFor="let cat of categories">
+                 <div>
+                    <p>{{cat}}</p>
+                   </div>
+                   </ion-col>
+                </ion-row>
+                </ion-grid>
+             <!-- <ion-list>
+         <ion-item *ngFor="let cat of categories">
+           <ion-label>{{cat}}</ion-label>
+         </ion-item>
+       </ion-list> -->
+       </ion-card-content>
+       </ion-card>
+
+       <ion-card>
+            <ion-card-header text-center text-wrap>
+              Recensioni
+            </ion-card-header>
+
+              <ion-card-content scrollY="true">
+                <ion-list>
+            <ion-item *ngFor="let tip of tips">
+              <div>{{tip}}</div>
+            </ion-item>
+          </ion-list>
+
+            </ion-card-content>
+            </ion-card>
+
+
 
 </ion-content>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-choosefilter',
   templateUrl: './choosefilter.page.html',
@@ -13,7 +14,6 @@ export class ChoosefilterPage implements OnInit {
   title: any;
   selectedOptionArray: any=[];
   open = false;
-  //selectedDayArray: any=[];
   stars: string;
   price = "none";
   intent: string;
@@ -46,16 +46,16 @@ export class ChoosefilterPage implements OnInit {
         {val: 'Sabato', isChecked: false, number: "6"},
         {val: 'Domenica', isChecked: false, number: "7"}
       ];*/
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private toastCtrl: ToastController) { }
 
 
 
   ngOnInit() {
     this.request= "https://api.foursquare.com/v2/search/recommendations?"
     this.route.params.subscribe(params => {
-       this.title = "Cerca un posto per " + params['id'].toLowerCase();
+       this.title = "Seleziona i filtri di ricerca";
        this.intent = params['id'].toLowerCase();
-  }); 
+  });
   }
 
   charMemberSelected(entry){
@@ -92,7 +92,7 @@ export class ChoosefilterPage implements OnInit {
 
   searchPlaces(){
     if(this.city == null){
-      console.log("Devi specificare una città!");
+      this.showToast("Specifica una città per effettuare una ricerca.");
     } else {
       console.log(this.price);
       this.request+="near="+this.city+"&intent="+this.intent+"";
@@ -135,6 +135,14 @@ export class ChoosefilterPage implements OnInit {
       // })
     }
 
+  }
+
+  async showToast(message){
+    const toast = await this.toastCtrl.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 
 

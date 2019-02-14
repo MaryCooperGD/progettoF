@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-place-details',
   templateUrl: './place-details.page.html',
@@ -7,9 +8,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaceDetailsPage implements OnInit {
 
-  constructor() { }
+  placeID:any;
+  title: any;
+  prova: any;
+  foto_url: any;
+  request = "https://api.foursquare.com/v2/venues/";
+  client_id = "XDSI4BB05BSOCU3CB0GHRQ1O0EY5IJ1UDECDSTQVI1O5JAKF";
+  client_secret = "R2HL2JVN4Q21WQIFZ12UCUS5RGZSYMEBVNE2NRIBXVVXTWKQ&v=20190211";
+
+  //Informazioni del luogo
+  address: any;
+  categories: any[];
+  rating: any;
+  photo_url: any;
+  tips: any[];
+
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.placeID = params['id'];
+      console.log(this.placeID);
+      this.title = params['name'];
+      this.request+=this.placeID+"?&client_id="+this.client_id+"&client_secret="+this.client_secret+"";
+    })
+
+    let cat = [];
+    let tipsList = [];
+    this.http.get(this.request)
+    .subscribe((response)=>{
+        this.address = response.response.venue.location.address;
+        response.response.venue.categories.forEach(c=>{
+          cat.push(c.shortName)
+        });
+        response.response.venue.tips.groups[0].items.forEach(i=>{
+          tipsList.push(i.text)
+        });
+        this.categories = cat;
+        this.tips = tipsList;
+        console.log("Lunghezza tips " + this.tips.length);
+        this.rating = response.response.venue.rating;
+        this.photo_url= response.response.venue.bestPhoto.prefix+"200x200"+response.response.venue.bestPhoto.suffix+"";
+    });
+
+
   }
 
 }

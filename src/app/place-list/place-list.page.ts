@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-place-list',
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PlaceListPage implements OnInit {
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private toastCtrl: ToastController) {
 
   }
 
@@ -28,11 +29,17 @@ export class PlaceListPage implements OnInit {
     let param = [];
     this.http.get(this.request)
     .subscribe((response)=>{
-      response.response.group.results.forEach(el => {
-      let venue = {id: el.id, name: el.venue.name};
-      param.push(venue);
-    })
-  this.venuesList = param;
+      if(response.response.group.totalResults == 0){
+        this.showToast("Non ci sono risultati per la tua ricerca.");
+      } else {
+        response.response.group.results.forEach(el => {
+        let venue = {id: el.venue.id, name: el.venue.name};
+        param.push(venue);
+      })
+    this.venuesList = param;
+
+      }
+
 });
 
   //  this.route.params.subscribe(params => {
@@ -51,4 +58,17 @@ export class PlaceListPage implements OnInit {
 //  });
   }
 
+  async showToast(message){
+    const toast = await this.toastCtrl.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
+
+
+  searchVenue(v){
+  //v.id
+  this.router.navigate(['/place-details', {id: v.id, name: v.name}]);
+  }
 }
