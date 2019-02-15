@@ -81,12 +81,16 @@
       background-color: #99ff99;
   }
 
+ion-card {
+  box-shadow: 3px 3px;
+  border-radius: 20px;
+}
   ion-card-content {
     background-color: #e6ffe6;
   }
 
   ion-header {
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 0.5px 0.5px 0px black;
   }
 
   ion-title{
@@ -95,17 +99,45 @@
 
   ion-card-title {
     color: black;
+    font-family:monospace;
   }
 
   ion-list {
-    margin-bottom: 10px;
+    background-color: transparent;
   }
 
   ion-label {
     font-weight: bold;
   }
 
-  ion-button {
+  button {
     border-width: thick;
+    background-color: #e6ffe6;
+    width: 100%;
+    font-weight: bold;
+    font-size: 15px;
+    height: 30px;
+    box-shadow: 3px 3px #888888;
+    border-radius: 20px;
   }
+
+  .listButton{
+      background-color: #e6ffe6;
+      width: 100%;
+      font-weight: bold;
+  }
+
+  ion-badge {
+    background-color: #99ff99;
+    color: #000000;
+  }
+
+  div {
+    padding-top: 10px;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    font-family:monospace;
+  }
+
 }
