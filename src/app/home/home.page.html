@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar text-center>
-    <ion-title color = "success">
+  <ion-toolbar text-center class = "new-background-color">
+    <ion-title >
       {{title}}
     </ion-title>
   </ion-toolbar>
@@ -11,10 +11,10 @@
 
   <div>
     <ion-row>
-      <ion-col *ngFor ="let place of intentList">
+      <ion-col *ngFor ="let place of intentList; let i = index">
         <ion-card>
           <ion-card-content>
-          <img class="img" src = "./assets/images/bar_icon.png" (click)="clickedImage(place.intent)">
+          <img class="img" src = "{{photoList[i]}}" (click)="clickedImage(place.intent)">
           <div>{{place.val}}</div>
           </ion-card-content>
         </ion-card>

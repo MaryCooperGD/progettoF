@@ -3,6 +3,8 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -84,12 +86,26 @@
   }
 
   ion-header {
-    background-color: #e6ffe6;
     text-shadow: 1px 1px 1px black;
+  }
+
+  ion-title{
+    color: black;
+  }
+
+  ion-card-title {
+    color: black;
   }
 
   ion-list {
     margin-bottom: 10px;
   }
 
+  ion-label {
+    font-weight: bold;
+  }
+
+  ion-button {
+    border-width: thick;
+  }
 }

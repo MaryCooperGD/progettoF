@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./place-details.page.scss'],
 })
 export class PlaceDetailsPage implements OnInit {
-
+  
   placeID:any;
   title: any;
   prova: any;

@@ -10,8 +10,8 @@
 <ion-content padding class="sfondo_content">
   <!-- Luogo -->
   <ion-card>
-      <ion-card-header class="blue-title">
-      Dove ti trovi? (*)
+      <ion-card-header>
+    <ion-card-title>   Dove ti trovi? (*)</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
@@ -42,8 +42,8 @@
 
 <!-- Fascia di prezzo -->
 <ion-card>
-    <ion-card-header class="blue-title">
-      Fascia di prezzo
+    <ion-card-header>
+      <ion-card-title> Fascia di prezzo </ion-card-title>
     </ion-card-header>
     <ion-card-content>
 <ion-item>
@@ -61,8 +61,8 @@
 
 <!-- Caratteristiche -->
 <ion-card>
-    <ion-card-header class="blue-title">
-      Preferenze
+    <ion-card-header>
+    <ion-card-title>   Preferenze</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
@@ -77,13 +77,13 @@
 <!-- Giorni di apertura -->
 
 <ion-card>
-    <ion-card-header class="blue-title">
-      Apertura
+    <ion-card-header>
+    <ion-card-title>  Apertura </ion-card-title>
     </ion-card-header>
     <ion-card-content>
 
         <ion-col>
-        <ion-label>Aperto ora</ion-label>
+        <ion-label class="my-label">Aperto ora</ion-label>
         </ion-col>
         <ion-col>
         <ion-checkbox color="primary" (click)="openNow()"></ion-checkbox>
@@ -101,7 +101,7 @@
 </ion-card-content>
 </ion-card>
 
-<button class= "card-button" ion-button (click)="searchPlaces()">Cerca i posti</button>
+<ion-button (click)="searchPlaces()">Cerca i posti</ion-button>
 
 
 </ion-content>
