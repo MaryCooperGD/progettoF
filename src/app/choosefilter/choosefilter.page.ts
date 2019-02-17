@@ -37,15 +37,6 @@ export class ChoosefilterPage implements OnInit {
         { val: 'Dotato di parcheggio', isChecked: false, number: "14" }
       ];
 
-      /*public days = [
-        {val: 'Lunedì', isChecked: false, number: "1"},
-        {val: 'Martedì', isChecked: false, number: "2"},
-        {val: 'Mercoledì', isChecked: false, number: "3"},
-        {val: 'Giovedì', isChecked: false, number: "4"},
-        {val: 'Venerdì', isChecked: false, number: "5"},
-        {val: 'Sabato', isChecked: false, number: "6"},
-        {val: 'Domenica', isChecked: false, number: "7"}
-      ];*/
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private toastCtrl: ToastController) { }
 
 
@@ -74,20 +65,6 @@ export class ChoosefilterPage implements OnInit {
     this.open = !this.open;
     console.log(this.open);
   }
-
-  //daySelected(day){
-
-    // day.isChecked = !day.isChecked;
-    // if(day.isChecked){
-    //   this.selectedDayArray.push(day);
-    // } else {
-    //   let newArray = this.selectedDayArray.filter(function(el){
-    //     return el.number !==  day.number;
-    //   });
-    //   this.selectedDayArray = newArray;
-    // }
-
-//  }
 
 
   searchPlaces(){
@@ -118,21 +95,6 @@ export class ChoosefilterPage implements OnInit {
 
       this.request+="&client_id="+this.client_id+"&client_secret="+this.client_secret+"";
         this.router.navigate(['/place-list', {request: this.request}]);
-      // let param = [];
-      // this.http.get(this.request)
-      // .subscribe((response)=>{
-      //   let array = [];
-      //   array = response.response.group.results;
-      //   // response.response.group.results.forEach(el => {
-      //   //   let venue = {id: el.id, name: el.venue.name};
-      //   //   param.push(String(el.id));
-      //   // })
-      //   // param.forEach(p=>{
-      //   //   console.log("Prima " + p);
-      //   // })
-      //   this.router.navigate(['/place-list', {request: this.request}]);
-      //
-      // })
     }
 
   }

@@ -19,26 +19,6 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Valutazione -->
-
-    <!-- <ion-card>
-        <ion-card-header class="blue-title">
-          Valutazione
-        </ion-card-header>
-        <ion-card-content>
-    <ion-item>
-    <ion-label>Stelle</ion-label>
-    <ion-select [(ngModel)]="stars" value= "none" okText="Conferma" cancelText="Annulla">
-      <ion-select-option value="none">Indifferente</ion-select-option>
-      <ion-select-option value="one">Una stella</ion-select-option>
-      <ion-select-option value="two">Due stelle</ion-select-option>
-      <ion-select-option value="three">Tre stelle</ion-select-option>
-      <ion-select-option value="four">Quattro stelle</ion-select-option>
-      <ion-select-option value="five">Cinque stelle</ion-select-option>
-    </ion-select>
-  </ion-item>
-</ion-card-content>
-</ion-card> -->
 
 <!-- Fascia di prezzo -->
 <ion-card>
@@ -49,7 +29,7 @@
 <ion-item>
 <ion-label>Spesa</ion-label>
 <ion-select [(ngModel)]="price" value= "no" okText="Conferma" cancelText="Annulla">
-  <ion-select-option value="no">Indifferente</ion-select-option>
+  <ion-select-option class ="listButton" value="no">Indifferente</ion-select-option>
   <ion-select-option value="1">$</ion-select-option>
   <ion-select-option value="2">$$</ion-select-option>
   <ion-select-option value="3">$$$</ion-select-option>
@@ -88,16 +68,7 @@
         <ion-col>
         <ion-checkbox color="primary" (click)="openNow()"></ion-checkbox>
         </ion-col>
-      <!-- <ion-row>
-        <ion-item *ngFor="let day of days">
-        <ion-col>
-
-      <ion-label>{{day.val}}</ion-label>
-      <ion-checkbox color="primary" (click)="daySelected(day)"></ion-checkbox>
-
-    </ion-col>
-      </ion-item>
-  </ion-row> -->
+      
 </ion-card-content>
 </ion-card>
 

@@ -42,20 +42,6 @@ export class PlaceListPage implements OnInit {
 
 });
 
-  //  this.route.params.subscribe(params => {
-
-    //  this.parameters = params['list'];
-
-      // console.log("Lunghezza par "+ params['par'].length);
-      // for (let par of params['par']){
-      //
-      // }
-      // this.parameters = params['par'];
-      // console.log("Lunghezza " + this.parameters.length);
-      // for (let par of this.parameters){
-      //   console.log(par);
-      // }
-//  });
   }
 
   async showToast(message){
@@ -68,7 +54,6 @@ export class PlaceListPage implements OnInit {
 
 
   searchVenue(v){
-  //v.id
   this.router.navigate(['/place-details', {id: v.id, name: v.name}]);
   }
 }
