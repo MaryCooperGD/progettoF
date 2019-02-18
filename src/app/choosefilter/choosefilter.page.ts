@@ -42,12 +42,12 @@ export class ChoosefilterPage implements OnInit {
 
 
   ngOnInit() {
-    this.request= "https://api.foursquare.com/v2/search/recommendations?"
     this.route.params.subscribe(params => {
        this.title = "Seleziona i filtri di ricerca";
        this.intent = params['id'].toLowerCase();
   });
   }
+
 
   charMemberSelected(entry){
     entry.isChecked = !entry.isChecked;
@@ -66,11 +66,15 @@ export class ChoosefilterPage implements OnInit {
     console.log(this.open);
   }
 
+  ionViewWillEnter(){
+    this.request ="";
+  }
 
   searchPlaces(){
     if(this.city == null){
       this.showToast("Specifica una città per effettuare una ricerca.");
     } else {
+      this.request= "https://api.foursquare.com/v2/search/recommendations?"
       console.log(this.price);
       this.request+="near="+this.city+"&intent="+this.intent+"";
 

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-place-details',
   templateUrl: './place-details.page.html',
   styleUrls: ['./place-details.page.scss'],
 })
 export class PlaceDetailsPage implements OnInit {
-  
+
   placeID:any;
   title: any;
   prova: any;
@@ -37,18 +38,18 @@ export class PlaceDetailsPage implements OnInit {
     let tipsList = [];
     this.http.get(this.request)
     .subscribe((response)=>{
-        this.address = response.response.venue.location.address;
-        response.response.venue.categories.forEach(c=>{
+        this.address = (response as any).response.venue.location.address;
+        (response as any).response.venue.categories.forEach(c=>{
           cat.push(c.shortName)
         });
-        response.response.venue.tips.groups[0].items.forEach(i=>{
+        (response as any).response.venue.tips.groups[0].items.forEach(i=>{
           tipsList.push(i.text)
         });
         this.categories = cat;
         this.tips = tipsList;
-        console.log("Lunghezza tips " + this.tips.length);
-        this.rating = response.response.venue.rating;
-        this.photo_url= response.response.venue.bestPhoto.prefix+"200x200"+response.response.venue.bestPhoto.suffix+"";
+        this.rating = (response as any).response.venue.rating;
+        this.photo_url= (response as any).response.venue.bestPhoto.prefix+"200x200"+(response as any).response.venue.bestPhoto.suffix+"";
+        this.request = "";
     });
 
 

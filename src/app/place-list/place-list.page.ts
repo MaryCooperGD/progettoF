@@ -26,13 +26,14 @@ export class PlaceListPage implements OnInit {
 
     })
 
+
     let param = [];
     this.http.get(this.request)
     .subscribe((response)=>{
-      if(response.response.group.totalResults == 0){
+      if((response as any).response.group.totalResults == 0){
         this.showToast("Non ci sono risultati per la tua ricerca.");
       } else {
-        response.response.group.results.forEach(el => {
+        (response as any).response.group.results.forEach(el => {
         let venue = {id: el.venue.id, name: el.venue.name};
         param.push(venue);
       })
@@ -42,6 +43,10 @@ export class PlaceListPage implements OnInit {
 
 });
 
+  }
+
+  ionViewWillLeave(){
+    this.request = "";
   }
 
   async showToast(message){
